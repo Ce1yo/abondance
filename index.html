@@ -830,5 +830,20 @@
 
 </script>
 <script async="" src="https://gufram.it/wp-content/themes/gufram/static/js/script.js?v=9.0"></script>
-</div></div></div></div></body>
+</div></div></div></div>
+<script>
+    document.addEventListener('click', function(e) {
+  // Trouver le lien le plus proche si on a cliqué sur un élément enfant
+  const link = e.target.closest('a');
+  if (link) {
+    e.preventDefault();
+    // Envoyer l'URL à la page parent
+    window.parent.postMessage({
+      type: 'navigation',
+      url: link.href
+    }, '*');
+  }
+});
+</script>
+</body>
 </html>
